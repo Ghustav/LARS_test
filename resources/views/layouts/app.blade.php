@@ -11,6 +11,15 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <style>
+
+      .top-right {
+          position: absolute;
+          right: 15px;
+          top: -17px;
+        }
+
+    </style>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>

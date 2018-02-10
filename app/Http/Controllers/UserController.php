@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Role;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\EditRequest;
 
 class UserController extends Controller
 {
@@ -13,7 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::orderBy('email', 'DESC')->paginate();
+        return view('Users.index', compact('users'));
     }
 
     /**
@@ -23,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('Users.create');
     }
 
     /**
@@ -32,9 +37,21 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+      $user  = new User;
+
+      $role_user = Role::where('name', 'user')->first();
+      $user->name      = $request->name;
+      $user->email     = $request->email;
+      $user->Latitude  = $request->Latitude;
+      $user->Longitude = $request->Longitude;
+      $user->password  = $request->password;
+
+      $user->save();
+      $user->roles()->attach($role_user);
+
+      return redirect()->route('users.index')->with('info', 'User created succesfully.');
     }
 
     /**
@@ -45,7 +62,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view("Users.show", compact('user'));
     }
 
     /**
@@ -56,7 +74,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+      $user = User::find($id);
+      return view("Users.edit", compact('user'));
     }
 
     /**
@@ -66,9 +85,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditRequest $request, $id)
     {
-        //
+      $user  = User::find($id);
+
+      $user->name      = $request->name;
+      $user->email     = $request->email;
+      $user->Latitude  = $request->Latitude;
+      $user->Longitude = $request->Longitude;
+
+      $user->save();
+
+      return redirect()->route('users.index')->with('info', 'User updated succesfully.');
     }
 
     /**
@@ -79,6 +107,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return back()->with('info', 'User deleted succesfully.');
     }
 }

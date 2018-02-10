@@ -8,9 +8,7 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    Congratulations! You are now an admin!
-
-                    You are logged in!
+                  <a href="{{ route("users.index") }}">Database management</a>
                 </div>
             </div>
         </div>

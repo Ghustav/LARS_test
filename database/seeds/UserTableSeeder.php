@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
            $user->email = 'user@example.com';
            $user->latitude = '40.6643';
            $user->longitude = '-73.9385';
-           $user->password = bcrypt('password');
+           $user->password = 'password';
            $user->save();
            $user->roles()->attach($role_user);
            $user = new User();
@@ -28,7 +28,7 @@ class UserTableSeeder extends Seeder
            $user->email = 'admin@example.com';
            $user->latitude = '8.5897';
            $user->longitude = '-71.1561';
-           $user->password = bcrypt('password');
+           $user->password = 'password';
            $user->save();
            $user->roles()->attach($role_admin);
         }
