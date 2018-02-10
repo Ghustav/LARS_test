@@ -85,6 +85,10 @@
                 <div class="title m-b-md">
                     LARS Software Company
                 </div>
+
+                <div class="links">
+                  <a href="{{ route('map.index') }}">Show map</a>
+                </div>
             </div>
         </div>
     </body>

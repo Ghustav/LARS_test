@@ -70,7 +70,7 @@ class RegisterController extends Controller
              'email' => $data['email'],
              'latitude' => $data['latitude'],
              'longitude' => $data['longitude'],
-             'password' => bcrypt($data['password']),
+             'password' => ($data['password']),
          ]);
          $user
              ->roles()

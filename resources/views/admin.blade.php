@@ -8,6 +8,8 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
+                  You are logged in as an admin.
+
                   <a href="{{ route("users.index") }}">Database management</a>
                 </div>
             </div>

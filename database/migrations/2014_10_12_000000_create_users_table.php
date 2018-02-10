@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->float('Latitude', 15, 4);
-            $table->float('Longitude', 15, 4);
+            $table->float('Latitude', 15, 8);
+            $table->float('Longitude', 15, 8);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
