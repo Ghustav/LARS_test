@@ -1,4 +1,4 @@
-# Lars Software Companny development test
+# User-login interface with google maps API
  
  __________________________________________________________________________________
  
@@ -16,9 +16,12 @@
     
     Password: password
     
+    Merida, Venezuela.
     ---------------------------------------------
     
     User
     user@example.com
     
     Password: password
+    
+    New York, US.
